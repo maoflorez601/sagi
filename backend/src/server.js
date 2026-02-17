@@ -1,6 +1,8 @@
-const express = require('express')
+import { PORT } from './config/env.js';
+import express from 'express';
+//const express = require('express')
 const app = express()
-const port = 3000
+//const port = process.env.PORT
 
 app.get('/', (req, res) => {
   res.send('SAGI API is running OK 🚀');
@@ -10,6 +12,6 @@ app.get('/health', (req, res) => {
   res.json({ status: 'ok' });
 });
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+app.listen(PORT, () => {
+  console.log(`Example app listening on port ${PORT}`)
 })
