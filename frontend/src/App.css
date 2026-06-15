@@ -1,54 +1,342 @@
 #root {
-  max-width: 860px;
-  margin: 0 auto;
-  padding: 2rem;
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  min-height: 100vh;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
-.container h1 {
-  margin-bottom: 0.25rem;
+.registration-shell {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: minmax(300px, 36vw) minmax(560px, 740px);
+  align-items: center;
+  justify-content: center;
+  gap: clamp(36px, 6vw, 96px);
+  padding: clamp(28px, 4vw, 56px);
+  background:
+    radial-gradient(circle at 18% 20%, rgba(75, 85, 99, 0.22), transparent 26%),
+    linear-gradient(115deg, #121820 0%, #0f1720 43%, #19202a 100%);
+  color: #f8fafc;
 }
 
-.subtitle {
-  color: #465569;
-  margin-top: 0;
+.brand-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: clamp(0px, 2vw, 28px);
 }
 
-.card {
-  border: 1px solid #d1d5db;
+.brand-lockup {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.brand-name {
+  color: #ffffff;
+  font-size: clamp(3.25rem, 5vw, 4.8rem);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: 0;
+}
+
+.sagi-mark {
+  position: relative;
+  width: 82px;
+  height: 92px;
+}
+
+.mark-stripe,
+.mark-tower,
+.mark-core {
+  position: absolute;
+  display: block;
+}
+
+.mark-stripe {
+  left: 0;
+  width: 62px;
+  height: 13px;
+  background: #ff6800;
+  transform: skewY(-30deg);
+}
+
+.mark-stripe-top {
+  top: 15px;
+}
+
+.mark-stripe-mid {
+  top: 34px;
+  width: 55px;
+}
+
+.mark-stripe-bottom {
+  top: 53px;
+  width: 48px;
+  background: #ffffff;
+}
+
+.mark-tower {
+  right: 5px;
+  bottom: 7px;
+  width: 17px;
+  height: 61px;
+  background: #ffffff;
+  transform: skewY(-30deg);
+  box-shadow: -14px 8px 0 #dfe5eb;
+}
+
+.mark-core {
+  left: 33px;
+  top: 6px;
+  width: 38px;
+  height: 34px;
+  background: #ffffff;
+  clip-path: polygon(22% 0, 100% 38%, 73% 100%, 6% 74%);
+}
+
+.brand-system {
+  margin: 18px 0 0;
+  color: #f8fafc;
+  font-size: clamp(1.35rem, 2vw, 1.72rem);
+  line-height: 1.42;
+  font-weight: 400;
+}
+
+.brand-system span,
+.brand-copy span {
+  display: block;
+}
+
+.brand-rule {
+  width: 46px;
+  height: 4px;
+  margin: 38px 0 28px;
+  border-radius: 999px;
+  background: #ff6800;
+}
+
+.brand-copy {
+  margin: 0;
+  color: #f8fafc;
+  font-size: clamp(1rem, 1.4vw, 1.28rem);
+  line-height: 1.72;
+}
+
+.form-card {
+  width: min(100%, 740px);
+  min-height: 710px;
+  display: flex;
+  flex-direction: column;
+  padding: 44px 46px 54px;
+  border: 1px solid rgba(203, 213, 225, 0.72);
   border-radius: 12px;
-  padding: 1.25rem;
-  margin: 1rem 0;
-  background: #fff;
+  background:
+    radial-gradient(circle at 72% 18%, rgba(226, 232, 240, 0.34), transparent 36%),
+    #fbfbfc;
+  box-shadow: 0 22px 60px rgba(3, 7, 18, 0.22);
+  color: #252b33;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 0.95rem;
-  font-weight: 600;
-  background-color: #111827;
-  color: white;
+.form-heading {
+  text-align: center;
+  margin-bottom: 26px;
+}
+
+.form-heading h1 {
+  margin: 0;
+  color: #22272f;
+  font-size: clamp(2rem, 3vw, 2.48rem);
+  line-height: 1.15;
+  font-weight: 760;
+}
+
+.form-heading p {
+  margin: 11px 0 0;
+  color: #6b7280;
+  font-size: 1.05rem;
+}
+
+.user-form {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 18px;
+  row-gap: 19px;
+}
+
+label {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 8px;
+  color: #2d333c;
+  font-size: 0.98rem;
+  font-weight: 560;
+}
+
+input,
+select {
+  width: 100%;
+  height: 46px;
+  border: 1px solid #d6dce5;
+  border-radius: 7px;
+  background: #ffffff;
+  color: #374151;
+  font: inherit;
+  font-weight: 400;
+  outline: none;
+  padding: 0 15px;
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+select {
+  appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, #7b8491 50%),
+    linear-gradient(135deg, #7b8491 50%, transparent 50%);
+  background-position:
+    calc(100% - 24px) 20px,
+    calc(100% - 18px) 20px;
+  background-size: 6px 6px;
+  background-repeat: no-repeat;
+  padding-right: 42px;
+}
+
+input:focus,
+select:focus {
+  border-color: #ff7a1a;
+  box-shadow: 0 0 0 4px rgba(255, 104, 0, 0.12);
+}
+
+input[readonly] {
+  background: #f8fafc;
+  color: #525b68;
+}
+
+.primary-action {
+  width: 100%;
+  min-height: 53px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28%;
+  border: 0;
+  border-radius: 7px;
+  background: #ff6800;
+  color: #ffffff;
+  font-size: 1.03rem;
+  font-weight: 700;
   cursor: pointer;
+  box-shadow: 0 13px 24px rgba(255, 104, 0, 0.2);
+  transition:
+    background-color 160ms ease,
+    transform 160ms ease,
+    opacity 160ms ease;
 }
 
-button:disabled {
-  cursor: not-allowed;
-  opacity: 0.5;
+.primary-action:hover {
+  background: #f25f00;
+  transform: translateY(-1px);
 }
 
-.error {
-  color: #b91c1c;
+.primary-action:disabled {
+  cursor: wait;
+  opacity: 0.72;
+  transform: none;
+}
+
+.form-status {
+  margin: -8px 0 0;
+  border-radius: 7px;
+  padding: 12px 14px;
+  font-size: 0.95rem;
+}
+
+.form-status-success {
+  background: #ecfdf3;
+  color: #047857;
+}
+
+.form-status-error {
+  background: #fef2f2;
+  color: #b42318;
+}
+
+.signin-hint {
+  margin: auto 0 0;
+  padding-top: 48px;
+  text-align: center;
+  color: #7c8491;
+  font-size: 1rem;
+}
+
+.signin-hint a {
+  color: #ff6800;
   font-weight: 600;
+  text-decoration: none;
 }
 
-pre {
-  margin-top: 1rem;
-  border-radius: 8px;
-  background: #111827;
-  color: #e5e7eb;
-  padding: 1rem;
-  overflow-x: auto;
-  font-size: 0.8rem;
+@media (max-width: 980px) {
+  .registration-shell {
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+    gap: 28px;
+  }
+
+  .brand-panel {
+    padding-left: 0;
+  }
+
+  .form-card {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .registration-shell {
+    padding: 22px;
+  }
+
+  .brand-lockup {
+    gap: 14px;
+  }
+
+  .sagi-mark {
+    width: 62px;
+    height: 72px;
+    transform: scale(0.8);
+    transform-origin: left center;
+  }
+
+  .brand-system {
+    font-size: 1.15rem;
+  }
+
+  .brand-rule {
+    margin: 24px 0 18px;
+  }
+
+  .form-card {
+    padding: 32px 22px 34px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .primary-action {
+    justify-content: space-between;
+    gap: 0;
+    padding: 0 24px;
+  }
+
+  .signin-hint {
+    padding-top: 28px;
+  }
 }
