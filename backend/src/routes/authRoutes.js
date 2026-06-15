@@ -1,29 +1,53 @@
+import { randomUUID } from 'crypto';
 import { Router } from 'express';
-import { requireAuth, requireScope } from '../middleware/auth.js';
+import { authenticateUser } from '../lib/usersStore.js';
 
 const router = Router();
 
-router.get('/public', (req, res) => {
-  res.json({
-    message: 'Ruta pública accesible sin autenticación.',
-    ts: new Date().toISOString(),
-  });
-});
+const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-router.get('/protected', requireAuth, (req, res) => {
-  res.json({
-    message: 'Acceso autorizado mediante Auth0.',
-    user: {
-      sub: req.auth.sub,
-      scope: req.auth.scope || '',
-    },
-  });
-});
+router.post('/auth/login', async (req, res) => {
+  const email = typeof req.body?.email === 'string' ? req.body.email.trim().toLowerCase() : '';
+  const password = typeof req.body?.password === 'string' ? req.body.password : '';
 
-router.get('/admin', requireAuth, requireScope('read:admin'), (req, res) => {
-  res.json({
-    message: 'Ruta con scope read:admin autorizado.',
-  });
+  if (!email || !password) {
+    return res.status(400).json({
+      error: 'missing_credentials',
+      message: 'Debes ingresar correo electronico y contrasena.',
+    });
+  }
+
+  if (!emailPattern.test(email)) {
+    return res.status(400).json({
+      error: 'invalid_email',
+      message: 'El correo electronico no tiene un formato valido.',
+    });
+  }
+
+  try {
+    const user = await authenticateUser({ email, password });
+
+    if (!user) {
+      return res.status(401).json({
+        error: 'invalid_credentials',
+        message: 'Correo electronico o contrasena incorrectos.',
+      });
+    }
+
+    return res.json({
+      message: 'Inicio de sesion correcto.',
+      session: {
+        token: randomUUID(),
+        user,
+        createdAt: new Date().toISOString(),
+      },
+    });
+  } catch {
+    return res.status(500).json({
+      error: 'login_failed',
+      message: 'No se pudo validar el inicio de sesion.',
+    });
+  }
 });
 
 export default router;

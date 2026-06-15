@@ -1,6 +1,7 @@
 import express from 'express';
 import { FRONTEND_ORIGIN, PORT } from './config/env.js';
 import authRoutes from './routes/authRoutes.js';
+import productRoutes from './routes/productRoutes.js';
 import userRoutes from './routes/userRoutes.js';
 
 const app = express();
@@ -20,7 +21,7 @@ app.use((req, res, next) => {
 });
 
 app.get('/', (req, res) => {
-  res.send('SAGI API is running OK 🚀');
+  res.send('SAGI API is running OK');
 });
 
 app.get('/health', (req, res) => {
@@ -28,6 +29,7 @@ app.get('/health', (req, res) => {
 });
 
 app.use('/api', authRoutes);
+app.use('/api', productRoutes);
 app.use('/api', userRoutes);
 
 app.listen(PORT, () => {

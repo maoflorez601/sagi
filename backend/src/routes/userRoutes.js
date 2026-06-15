@@ -11,7 +11,7 @@ const requiredFields = [
   'email',
   'phone',
   'department',
-  'role',
+  'password',
 ];
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -23,6 +23,7 @@ const normalizeUserInput = (body) => {
     normalized[field] = typeof body[field] === 'string' ? body[field].trim() : '';
   });
 
+  normalized.role = typeof body.role === 'string' ? body.role.trim() : '';
   normalized.email = normalized.email.toLowerCase();
   return normalized;
 };
@@ -40,6 +41,10 @@ const validateUserInput = (userInput) => {
 
   if (userInput.documentNumber.length < 5) {
     return 'El numero de documento debe tener al menos 5 caracteres.';
+  }
+
+  if (userInput.password.length < 8) {
+    return 'La contrasena debe tener al menos 8 caracteres.';
   }
 
   return '';
