@@ -2,7 +2,7 @@ import { Router } from 'express';
 
 const router = Router();
 
-const products = [
+let products = [
   {
     code: 'PROD-001',
     name: 'Paracetamol 500mg',
@@ -61,6 +61,43 @@ const products = [
 
 router.get('/products', (req, res) => {
   res.json({ products });
+});
+
+router.post('/products', (req, res) => {
+  const product = req.body || {};
+  const code = typeof product.code === 'string' ? product.code.trim() : '';
+
+  if (!code) {
+    return res.status(400).json({
+      error: 'missing_product_code',
+      message: 'El codigo del producto es obligatorio.',
+    });
+  }
+
+  const duplicatedCode = products.some(
+    (currentProduct) => currentProduct.code.toLowerCase() === code.toLowerCase(),
+  );
+
+  if (duplicatedCode) {
+    return res.status(409).json({
+      error: 'duplicated_product_code',
+      message: 'Ya existe un producto con este codigo.',
+    });
+  }
+
+  const nextProduct = {
+    ...product,
+    code,
+    stock: Number(product.stock || 0),
+    status: product.status || 'Activo',
+  };
+
+  products = [...products, nextProduct];
+
+  return res.status(201).json({
+    message: 'Producto registrado correctamente.',
+    product: nextProduct,
+  });
 });
 
 export default router;

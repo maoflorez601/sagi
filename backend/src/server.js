@@ -2,6 +2,7 @@ import express from 'express';
 import { FRONTEND_ORIGIN, PORT } from './config/env.js';
 import authRoutes from './routes/authRoutes.js';
 import productRoutes from './routes/productRoutes.js';
+import requestRoutes from './routes/requestRoutes.js';
 import userRoutes from './routes/userRoutes.js';
 
 const app = express();
@@ -30,6 +31,7 @@ app.get('/health', (req, res) => {
 
 app.use('/api', authRoutes);
 app.use('/api', productRoutes);
+app.use('/api', requestRoutes);
 app.use('/api', userRoutes);
 
 app.listen(PORT, () => {
