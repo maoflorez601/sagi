@@ -31,6 +31,14 @@
   color: #f8fafc;
 }
 
+.sidebar-logo {
+  width: 104px;
+  height: 104px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto 28px;
+}
+
 .app-logo {
   position: relative;
   width: 86px;
@@ -542,6 +550,12 @@ td strong {
   color: #f8fafc;
 }
 
+.login-shell {
+  grid-template-columns: minmax(340px, 380px) minmax(520px, 572px);
+  gap: clamp(74px, 10vw, 134px);
+  padding: 48px 54px;
+}
+
 .auth-brand-panel {
   display: flex;
   flex-direction: column;
@@ -554,6 +568,18 @@ td strong {
   gap: 28px;
 }
 
+.auth-brand-logo {
+  width: 116px;
+  height: 116px;
+  object-fit: contain;
+  object-position: center;
+  filter: drop-shadow(0 14px 24px rgba(0, 0, 0, 0.22));
+}
+
+.login-brand-panel {
+  transform: translateY(5px);
+}
+
 .auth-brand-lockup .app-logo {
   margin: 0;
   transform: scale(1.18);
@@ -562,16 +588,17 @@ td strong {
 
 .auth-brand-lockup span {
   color: #ffffff;
-  font-size: clamp(4rem, 6.2vw, 5.95rem);
+  font-size: clamp(3.8rem, 5.8vw, 5.1rem);
   font-weight: 800;
-  line-height: 0.94;
+  line-height: 0.95;
+  text-shadow: 0 13px 24px rgba(0, 0, 0, 0.22);
 }
 
 .auth-brand-panel p {
-  margin: 20px 0 0;
+  margin: 10px 0 0;
   color: #ffffff;
-  font-size: clamp(1.44rem, 2.2vw, 2rem);
-  line-height: 1.42;
+  font-size: clamp(1.42rem, 2.1vw, 1.65rem);
+  line-height: 1.52;
 }
 
 .auth-brand-panel p span,
@@ -582,15 +609,15 @@ td strong {
 .auth-brand-panel i {
   width: 50px;
   height: 5px;
-  margin: 40px 0 29px;
+  margin: 38px 0 28px;
   border-radius: 999px;
   background: #ff6900;
 }
 
 .auth-brand-panel .auth-brand-copy {
   margin: 0;
-  font-size: clamp(1.08rem, 1.5vw, 1.38rem);
-  line-height: 1.72;
+  font-size: clamp(1.08rem, 1.45vw, 1.28rem);
+  line-height: 1.78;
 }
 
 .secure-card {
@@ -604,6 +631,12 @@ td strong {
   border-radius: 7px;
   background: rgba(255, 255, 255, 0.09);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.secure-card .icon {
+  width: 29px;
+  height: 29px;
+  color: #ff6900;
 }
 
 .secure-card p {
@@ -634,7 +667,24 @@ td strong {
 
 .login-card {
   min-height: 576px;
-  padding: 45px 55px 43px;
+  padding: 47px 55px 43px;
+}
+
+.login-form {
+  gap: 24px;
+}
+
+.login-card .auth-heading {
+  margin-bottom: 37px;
+}
+
+.login-card .auth-heading h1 {
+  font-size: 2.05rem;
+  letter-spacing: 0;
+}
+
+.login-card .auth-primary {
+  margin-top: 15px;
 }
 
 .register-card {
