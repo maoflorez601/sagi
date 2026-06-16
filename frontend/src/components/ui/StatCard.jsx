@@ -3,7 +3,7 @@ import { Icon } from './Icon.jsx';
 export function StatCard({ color, icon, label, value, caption }) {
   return (
     <article className="stat-card">
-      <div className={`stat-icon stat-${color}`}>
+      <div className={`stat-icon stat-icon-${color}`}>
         <Icon name={icon} />
       </div>
       <div>
