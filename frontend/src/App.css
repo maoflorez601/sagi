@@ -556,6 +556,12 @@ td strong {
   padding: 48px 54px;
 }
 
+.register-shell {
+  grid-template-columns: minmax(350px, 390px) minmax(640px, 742px);
+  gap: clamp(70px, 9vw, 128px);
+  padding: 24px 86px;
+}
+
 .auth-brand-panel {
   display: flex;
   flex-direction: column;
@@ -580,6 +586,10 @@ td strong {
   transform: translateY(5px);
 }
 
+.register-brand-panel {
+  transform: translateY(12px);
+}
+
 .auth-brand-lockup .app-logo {
   margin: 0;
   transform: scale(1.18);
@@ -592,6 +602,19 @@ td strong {
   font-weight: 800;
   line-height: 0.95;
   text-shadow: 0 13px 24px rgba(0, 0, 0, 0.22);
+}
+
+.register-brand-lockup {
+  gap: 25px;
+}
+
+.register-brand-lockup .auth-brand-logo {
+  width: 107px;
+  height: 107px;
+}
+
+.register-brand-lockup span {
+  font-size: clamp(3.4rem, 5vw, 4.8rem);
 }
 
 .auth-brand-panel p {
@@ -689,6 +712,25 @@ td strong {
 
 .register-card {
   padding: 36px 46px 38px;
+}
+
+.restored-register-card {
+  width: min(100%, 742px);
+  min-height: 710px;
+  padding: 45px 46px 38px;
+}
+
+.register-heading {
+  margin-bottom: 28px;
+}
+
+.register-heading h1 {
+  font-size: 2rem;
+  letter-spacing: 0;
+}
+
+.register-heading p {
+  margin-top: 10px;
 }
 
 .auth-heading {
@@ -843,6 +885,83 @@ td strong {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px 18px;
+}
+
+.restored-register-form {
+  gap: 0;
+}
+
+.restored-register-grid {
+  gap: 21px 18px;
+}
+
+.register-field {
+  gap: 9px;
+}
+
+.register-field input,
+.register-field select {
+  height: 45px;
+  border-color: #d4dbe7;
+  border-radius: 7px;
+  color: #374151;
+  padding: 0 15px;
+}
+
+.register-field select {
+  appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, #8a97a8 50%),
+    linear-gradient(135deg, #8a97a8 50%, transparent 50%);
+  background-position:
+    calc(100% - 25px) 19px,
+    calc(100% - 19px) 19px;
+  background-size: 6px 6px;
+  background-repeat: no-repeat;
+  padding-right: 42px;
+}
+
+.register-field input:focus,
+.register-field select:focus {
+  border-color: #ff9b54;
+  box-shadow: 0 0 0 4px rgba(255, 105, 0, 0.1);
+}
+
+.register-area-field {
+  width: 100%;
+}
+
+.register-status {
+  margin: 18px 0 -4px;
+}
+
+.register-next-button {
+  min-height: 52px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 34px;
+}
+
+.register-next-button .icon {
+  width: 22px;
+  height: 22px;
+}
+
+.register-switch {
+  margin-top: 52px;
+  padding-top: 0;
+}
+
+.register-switch button {
+  border: 0;
+  background: transparent;
+  color: #ff6900;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 680;
+  padding: 0;
 }
 
 .role-note {
